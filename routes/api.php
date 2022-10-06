@@ -17,17 +17,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[LoginController::class,'register']);
 Route::post('login',[LoginController::class,'login']);
-<<<<<<< Updated upstream
+
+Route::middleware('auth:sanctum')->group(function(){
+
+
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-=======
 Route::middleware('auth:sanctum')->group(function(){
+
         Route::prefix('property')->group(function () {
              Route::get('',[PropertyController::class,'index']);
              Route::get('{id}',[PropertyController::class,'editpropery'])->name('property.geteditblog'); // get id
              Route::post('/create',[PropertyController::class,'store'])->name('property.create');
              route::post('/edit/{id}',[PropertyController::class,'update'])->name('property.edit');
              route::delete('/delete/{id}',[PropertyController::class,'destroy'])->name('property.delete');
+
+
             });
->>>>>>> Stashed changes
+
+
+            });
+
 });
